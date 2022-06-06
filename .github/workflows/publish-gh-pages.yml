@@ -48,6 +48,7 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: build
+        path: publish
     - name: Add .nojekyll file
       run: touch publish/wwwroot/.nojekyll
     - name: Deploy 🚀
