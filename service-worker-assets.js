@@ -33,11 +33,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-7rtaHUKNCybGZi7qOzMpNeZtX0Big\/dJjhYDdvfR6gM=",
+      "hash": "sha256-38dTonXi6Mn41DYTVPnJt3fT1ZdFp4WGRSnPbnXrY5E=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-HIWSN0Faq9j229Rfm4Z+nS0X4nTLTAzbwHxN9Oc2QqI=",
+      "hash": "sha256-DcR\/EgZEJObVGuVza09KLHQC9cSuQ+MwAUPcm6TSsZk=",
       "url": "_framework\/AniVision.Web.Client.dll"
     },
     {
@@ -229,5 +229,5 @@
       "url": "sample-data\/weather.json"
     }
   ],
-  "version": "A6ic8dId"
+  "version": "VlJdFRXs"
 };

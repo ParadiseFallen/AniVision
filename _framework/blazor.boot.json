@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "AniVision.Web.Client.dll": "sha256-HIWSN0Faq9j229Rfm4Z+nS0X4nTLTAzbwHxN9Oc2QqI=",
+      "AniVision.Web.Client.dll": "sha256-DcR\/EgZEJObVGuVza09KLHQC9cSuQ+MwAUPcm6TSsZk=",
       "Microsoft.AspNetCore.Components.dll": "sha256-G9UzI11Ygage3LGW0KK7GUHdxolCsv4Nk3ttk\/VWovg=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-4uR\/ZmF\/RZ73Mo8mWlSwHKdQdxP8\/fE3yxM4H9rMitc=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-OfawION\/UfFO75U4pMPDVhHt71EbKuF3qxDeiPFGqKo=",
