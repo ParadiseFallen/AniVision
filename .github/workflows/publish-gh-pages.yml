@@ -13,27 +13,48 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
- deploy:
-    # use ubuntu-latest image to run steps on
+
+  checkout:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    
-    # sets up .NET Core SDK 3.1
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
+  
+  install-sdk:
+    needs: [ checkout ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v2.1.0
       with:
         dotnet-version: 6.0.x
-
-    # publishes Blazor project to the release-folder
-    - name: Publish .NET Project
+      
+  build:
+    needs: [ install-sdk ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build application
       run: dotnet publish ./src/AniVision.Web.Client/AniVision.Web.Client.csproj -c Release -o publish
     
+  change-base-href:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Change base-tag in index.html from / to AniVision
+    - run: sed -i 's/<base href="\/" \/>/<base href="\/AniVision\/" \/>/g' publish/wwwroot/index.html
+    
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+  add-nojekyl:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
     - name: Add .nojekyll file
       run: touch publish/wwwroot/.nojekyll
       
+  publish:
+    needs: [ build, add-nojekyl, change-base-href ]
+    runs-on: ubuntu-latest
     # push to gh pages
+    steps:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
