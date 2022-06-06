@@ -13,14 +13,9 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
-  checkout:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+    
   
   install-sdk:
-    needs: [ checkout ]
     runs-on: ubuntu-latest
     steps:
     - name: Setup .NET SDK
@@ -29,9 +24,10 @@ jobs:
         dotnet-version: 6.0.x
       
   build:
-    needs: [ checkout, install-sdk ]
+    needs: [ install-sdk ]
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Build application
       run: dotnet publish ./src/AniVision.Web.Client/AniVision.Web.Client.csproj -c Release -o publish
     
